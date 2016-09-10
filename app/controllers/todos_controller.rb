@@ -5,6 +5,12 @@ class TodosController < ApplicationController
   # GET /todos.json
   def index
     @todos = Todo.all
+    @all_count = @todos.length
+
+    if @all_count > 0
+      @completed = @todos.select{ |t| t.is_done }.length
+      @progressbar_width = (@completed * 100) / @all_count
+    end
   end
 
   # GET /todos/1
@@ -62,13 +68,13 @@ class TodosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_todo
-      @todo = Todo.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_todo
+    @todo = Todo.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def todo_params
-      params.require(:todo).permit(:title, :description, :due_date, :is_done)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def todo_params
+    params.require(:todo).permit(:title, :description, :due_date, :is_done)
+  end
 end

@@ -2,7 +2,7 @@
 
 <h1>Todos</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Title</th>
@@ -27,8 +27,15 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
+
+<% if @all_count > 0 %>
+  <h3>Tasks completed</h3>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="<%= @completed %>" aria-valuemin="0" aria-valuemax="<%= @all_count %>" style="width: <%=@progressbar_width%>%;">
+    </div>
+  </div>
+<% end %>
 
 <%= link_to new_todo_path, class: 'btn btn-success' do %>
   <i class="glyphicon glyphicon-plus"></i> New Todo
