@@ -2,13 +2,13 @@
 
 <h1>Todos</h1>
 
-<table class="table">
+<table class="table table-hover">
   <thead>
     <tr>
+      <th></th>
       <th>Title</th>
       <th>Description</th>
       <th>Due date</th>
-      <th>Is done</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +16,10 @@
   <tbody>
     <% @todos.each do |todo| %>
       <tr>
+        <td><%= check_box_tag :is_done, 1, todo.is_done %></td>
         <td><%= todo.title %></td>
         <td><%= todo.description %></td>
         <td><%= todo.due_date %></td>
-        <td><%= todo.is_done %></td>
         <td><%= link_to 'Show', todo %></td>
         <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
         <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
