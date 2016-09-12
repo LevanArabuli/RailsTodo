@@ -4,12 +4,12 @@ class TodosController < ApplicationController
   # GET /todos
   # GET /todos.json
   def index
-    @todos = Todo.all
-    @all_count = @todos.length
+    @all = Todo.all
+    @done = @all.select { |t| t.is_done }
+    @todo = @all.select { |t| !t.is_done }
 
-    if @all_count > 0
-      @completed = @todos.select{ |t| t.is_done }.length
-      @progressbar_width = (@completed * 100) / @all_count
+    if @all.length > 0
+      @progressbar_width = (@done.length * 100) / @all.length
     end
   end
 

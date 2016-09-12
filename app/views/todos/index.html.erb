@@ -14,28 +14,54 @@
   </thead>
 
   <tbody>
-    <% @todos.each do |todo| %>
+    <% @todo.each do |item| %>
       <tr>
-        <td><%= check_box_tag :is_done, 1, todo.is_done %></td>
-        <td><%= todo.title %></td>
-        <td><%= todo.description %></td>
-        <td><%= todo.due_date %></td>
-        <td><%= link_to 'Show', todo %></td>
-        <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
-        <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= check_box_tag :is_done, 1, item.is_done, :id => item.id, :onclick => "checkTodo(this);" %></td>
+        <td><%= item.title %></td>
+        <td><%= item.description %></td>
+        <td><%= item.due_date %></td>
+        <td><%= link_to 'Show', item %></td>
+        <td><%= link_to 'Edit', edit_todo_path(item) %></td>
+        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
 
-<% if @all_count > 0 %>
+<% if @done.length > 0 %>
   <h3>Tasks completed</h3>
   <div class="progress">
     <div class="progress-bar" role="progressbar" aria-valuenow="<%= @completed %>" aria-valuemin="0" aria-valuemax="<%= @all_count %>" style="width: <%=@progressbar_width%>%;">
     </div>
   </div>
 <% end %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Due date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @done.each do |item| %>
+      <tr>
+        <td><%= check_box_tag :is_done, 1, item.is_done, :id => item.id, :onclick => "uncheckTodo(this);" %></td>
+        <td><%= item.title %></td>
+        <td><%= item.description %></td>
+        <td><%= item.due_date %></td>
+        <td><%= link_to 'Show', item %></td>
+        <td><%= link_to 'Edit', edit_todo_path(item) %></td>
+        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to new_todo_path, class: 'btn btn-success' do %>
   <i class="glyphicon glyphicon-plus"></i> New Todo
