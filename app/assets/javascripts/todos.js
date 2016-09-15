@@ -29,3 +29,11 @@ $(document).on('change', '[type=checkbox]', function (e) {
 		})
 	}, 200);
 });
+
+var ix = 0;
+$(function () {
+	$('#switch').click(function(){
+		ix++;
+		$('.background-image').css('background-image', 'url(/images/bg' + ix%4 + '.jpg)');
+	})
+});
