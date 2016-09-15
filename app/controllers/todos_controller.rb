@@ -13,6 +13,17 @@ class TodosController < ApplicationController
     end
   end
 
+  def update_status
+    todo = Todo.find(params[:id])
+    todo.is_done = params[:isDone] == 'true'
+
+    if todo.save
+      render json: true
+      else
+        render :json => '', :status => 500
+    end 
+  end
+
   # GET /todos/1
   # GET /todos/1.json
   def show

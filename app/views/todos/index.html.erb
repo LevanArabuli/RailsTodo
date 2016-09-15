@@ -29,10 +29,11 @@
 </table>
 <br>
 
-<% if @done.length > 0 %>
+<% if @all.length > 0 %>
   <h3>Tasks completed</h3>
   <div class="progress">
-    <div class="progress-bar" role="progressbar" aria-valuenow="<%= @completed %>" aria-valuemin="0" aria-valuemax="<%= @all_count %>" style="width: <%=@progressbar_width%>%;">
+    <div class="progress-bar" role="progressbar" aria-valuenow="<%= @done.length %>" aria-valuemin="0" aria-valuemax="<%= @all.length %>" style="width: <%=@progressbar_width%>%;">
+      <%= "#{@done.length} / #{@all.length}" %>
     </div>
   </div>
 <% end %>
