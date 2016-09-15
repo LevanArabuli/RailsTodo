@@ -2,7 +2,7 @@
 
 <h1>Todos</h1>
 
-<table class="table table-hover">
+<table class="table table-hover" id="todoItems">
   <thead>
     <tr>
       <th></th>
@@ -16,7 +16,7 @@
   <tbody>
     <% @todo.each do |item| %>
       <tr>
-        <td><%= check_box_tag :is_done, 1, item.is_done, :id => item.id, :onclick => "checkTodo(this);" %></td>
+        <td><%= check_box_tag :is_done, 1, item.is_done, :id => item.id %></td>
         <td><%= item.title %></td>
         <td><%= item.description %></td>
         <td><%= item.due_date %></td>
@@ -37,7 +37,7 @@
   </div>
 <% end %>
 
-<table class="table table-hover">
+<table class="table table-hover" id="doneItems">
   <thead>
     <tr>
       <th></th>
@@ -51,7 +51,7 @@
   <tbody>
     <% @done.each do |item| %>
       <tr>
-        <td><%= check_box_tag :is_done, 1, item.is_done, :id => item.id, :onclick => "uncheckTodo(this);" %></td>
+        <td><%= check_box_tag :is_done, 1, item.is_done, :id => item.id %></td>
         <td><%= item.title %></td>
         <td><%= item.description %></td>
         <td><%= item.due_date %></td>

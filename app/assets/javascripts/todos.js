@@ -1,8 +1,8 @@
-function checkTodo(item){
-	console.log('check', item.id);
-}
-
-function uncheckTodo(item){
-	console.log('uncheck', item.id);
-	$(item).closest('tr').remove();
-}
+$(document).on('change', '[type=checkbox]', function (e) {
+	box = e.target;
+	setTimeout(function () {
+		$(box).closest('tr').remove();
+		var dest = box.checked ? $('#doneItems') : $('#todoItems');
+		dest.append($(box).closest('tr'));
+	}, 500);	
+});
