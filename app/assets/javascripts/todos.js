@@ -5,7 +5,7 @@ function updateProgressBar(diff) {
 
 	var max = bar.attr('aria-valuemax');
 	bar.attr('aria-valuenow', done);
- 
+
 	bar.width(((done * 100) / max) + '%');
 
 	bar.text(done + ' / ' + max);
@@ -15,7 +15,7 @@ function saveStatus(id, status) {
 	return $.post('/todos/updatestatus', { id: id, isDone: status });
 }
 
-$(document).on('change', '[type=checkbox]', function (e) {
+$(document).on('change', '[name=checkbox]', function (e) {
 	box = e.target;
 	setTimeout(function () {
 		saveStatus($(box).attr('id'), box.checked).success(function (response) {
@@ -32,8 +32,12 @@ $(document).on('change', '[type=checkbox]', function (e) {
 
 var ix = 0;
 $(function () {
-	$('#switch').click(function(){
+	$('#switch').click(function () {
 		ix++;
-		$('.background-image').css('background-image', 'url(/images/bg' + ix%4 + '.jpg)');
+		$('.background-image').css('background-image', 'url(/images/bg' + ix % 4 + '.jpg)');
 	})
+});
+
+$(function () {
+	$('#due_date').datetimepicker();
 });
