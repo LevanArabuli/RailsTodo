@@ -15,7 +15,7 @@ function saveStatus(id, status) {
 	return $.post('/todos/updatestatus', { id: id, isDone: status });
 }
 
-$(document).on('change', '[name=checkbox]', function (e) {
+$(document).on('change', '[name=is_done]', function (e) {
 	box = e.target;
 	setTimeout(function () {
 		saveStatus($(box).attr('id'), box.checked).success(function (response) {
