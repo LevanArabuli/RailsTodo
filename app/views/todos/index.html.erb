@@ -19,13 +19,13 @@
     <tbody>
       <% @todo.each do |item| %>
         <tr>
-          <td><%= check_box_tag :is_done, 1, item.is_done, :id => item.id %></td>
-          <td><%= item.title %></td>
-          <td><%= item.description %></td>
-          <td><%= item.due_date %></td>
-          <td><%= link_to 'Show', item %></td>
-          <td><%= link_to 'Edit', edit_todo_path(item) %></td>
-          <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td class="col-xs-1"><%= check_box_tag :is_done, 1, item.is_done, :id => item.id %></td>
+          <td class="col-xs-2"><%= item.title %></td>
+          <td class="col-xs-4"><%= item.description %></td>
+          <td class="col-xs-2"><%= item.due_date.blank? ? '' : item.due_date.strftime('%Y/%d/%d') %></td>
+          <td class="col-xs-1"><%= link_to 'Show', item %></td>
+          <td class="col-xs-1"><%= link_to 'Edit', edit_todo_path(item) %></td>
+          <td class="col-xs-1"><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
@@ -55,13 +55,13 @@
     <tbody>
       <% @done.each do |item| %>
         <tr>
-          <td><%= check_box_tag :is_done, 1, item.is_done, :id => item.id %></td>
-          <td><%= item.title %></td>
-          <td><%= item.description %></td>
-          <td><%= item.due_date %></td>
-          <td><%= link_to 'Show', item %></td>
-          <td><%= link_to 'Edit', edit_todo_path(item) %></td>
-          <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td class="col-xs-1"><%= check_box_tag :is_done, 1, item.is_done, :id => item.id %></td>
+          <td class="col-xs-2"><%= item.title %></td>
+          <td class="col-xs-4"><%= item.description %></td>
+          <td class="col-xs-2"><%= item.due_date.blank? ? '' : item.due_date.strftime('%Y/%d/%d') %></td>
+          <td class="col-xs-1"><%= link_to 'Show', item %></td>
+          <td class="col-xs-1"><%= link_to 'Edit', edit_todo_path(item) %></td>
+          <td class="col-xs-1"><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>

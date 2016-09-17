@@ -1,34 +1,40 @@
-<%= form_for(todo, class: 'form-group') do |f| %>
-  <% if todo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+<div class="row">
+  <div class="col-sm-6">
+    <%= form_for(todo, class: 'form-group') do |f| %>
+      <% if todo.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
 
-      <ul>
-      <% todo.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% todo.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control' %>
-  </div>
+      <div class="field">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: 'form-control' %>
-  </div>
+      <div class="field">
+        <%= f.label :description %>
+        <%= f.text_area :description, class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :is_done %>
-    <%= f.check_box :is_done, class: 'form-control' %>
+      <div class="row">
+        <div class="field col-sm-5">        
+          <%= f.label :due_date %>
+          <%= f.text_field :due_date, class: 'form-control', data: { date_format: 'YYYY/MM/DD' } %>
+        </div>
+      </div>
+      
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
 
 

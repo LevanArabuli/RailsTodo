@@ -30,14 +30,12 @@ $(document).on('change', '[name=is_done]', function (e) {
 	}, 200);
 });
 
-var ix = 0;
-$(function () {
+$(document).on('turbolinks:load', function() {
+	$('#todo_due_date').datetimepicker();
+
+	var ix = 0;
 	$('#switch').click(function () {
 		ix++;
 		$('.background-image').css('background-image', 'url(/images/bg' + ix % 4 + '.jpg)');
-	})
-});
-
-$(function () {
-	$('#due_date').datetimepicker();
+	});
 });
