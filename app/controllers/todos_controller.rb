@@ -39,9 +39,9 @@ class TodosController < ApplicationController
     @todo = Todo.new(todo_params)
     
     if @todo.save
-      redirect_to action: "index"
+      redirect_to action: 'index'
     else
-      format.html { render :new }
+      render :new
     end
   end
 
@@ -49,9 +49,9 @@ class TodosController < ApplicationController
   # PATCH/PUT /todos/1.json
   def update
     if @todo.update(todo_params)
-      redirect_to action: "index"
+      redirect_to action: 'index'
     else
-      format.html { render :edit }
+      render :edit
     end
   end
 
@@ -60,8 +60,7 @@ class TodosController < ApplicationController
   def destroy
     @todo.destroy
     respond_to do |format|
-      format.html { redirect_to todos_url, notice: 'Todo was successfully destroyed.' }
-      format.json { head :no_content }
+      redirect_to todos_url, notice: 'Todo was successfully destroyed.'
     end
   end
 

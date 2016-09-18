@@ -1,0 +1,49 @@
+<div class="row">
+	<div class="col-xs-3">
+		
+		<h3>Register new user</h3>
+
+		<%= form_for @user, url: 'register', method: :post do |f| %>
+			
+			<%= render 'shared/errors', model: @user %>
+
+			<div class="form-group">
+				<%= f.label :first_name %>
+				<%= f.text_field :first_name, class: 'form-control' %>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :last_name %>
+				<%= f.text_field :last_name, class: 'form-control' %>
+			</div>
+	
+			<div class="form-group">
+				<%= f.label :email %>
+				<%= f.text_field :email, class: 'form-control' %>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-8">
+					<div class="form-group">
+						<%= f.label :password %>
+						<%= f.password_field :password, class: 'form-control' %>
+					</div>
+
+					<div class="form-group">
+						<%= f.label :confirm_password %>
+						<%= f.password_field :confirm_password, class: 'form-control' %>
+					</div>
+
+					<div class="form-group">
+							<%= f.label :birth_date %>
+							<%= f.text_field :birth_date, class: 'form-control', data: { date_format: 'YYYY/MM/DD' } %>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<%= f.submit 'Sign up' %>
+			</div>
+		<% end %>
+	</div>
+</div>

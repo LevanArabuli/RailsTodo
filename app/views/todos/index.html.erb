@@ -21,9 +21,8 @@
         <tr>
           <td class="col-xs-1"><%= check_box_tag :is_done, 1, item.is_done, :id => item.id %></td>
           <td class="col-xs-2"><%= item.title %></td>
-          <td class="col-xs-4"><%= item.description %></td>
+          <td class="col-xs-5"><%= item.description %></td>
           <td class="col-xs-2"><%= item.due_date.blank? ? '' : item.due_date.strftime('%Y/%d/%d') %></td>
-          <td class="col-xs-1"><%= link_to 'Show', item %></td>
           <td class="col-xs-1"><%= link_to 'Edit', edit_todo_path(item) %></td>
           <td class="col-xs-1"><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
@@ -57,9 +56,8 @@
         <tr>
           <td class="col-xs-1"><%= check_box_tag :is_done, 1, item.is_done, :id => item.id %></td>
           <td class="col-xs-2"><%= item.title %></td>
-          <td class="col-xs-4"><%= item.description %></td>
+          <td class="col-xs-5"><%= item.description %></td>
           <td class="col-xs-2"><%= item.due_date.blank? ? '' : item.due_date.strftime('%Y/%d/%d') %></td>
-          <td class="col-xs-1"><%= link_to 'Show', item %></td>
           <td class="col-xs-1"><%= link_to 'Edit', edit_todo_path(item) %></td>
           <td class="col-xs-1"><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
@@ -70,4 +68,5 @@
   <%= link_to new_todo_path, class: 'btn btn-success' do %>
     <i class="glyphicon glyphicon-plus"></i> New Todo
   <% end %>
+  <div><br></div>
 </div>
