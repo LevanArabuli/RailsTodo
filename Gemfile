@@ -51,5 +51,6 @@ gem 'autoprefixer-rails'
 
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
+gem 'newrelic_rpm'
 
 ruby "2.3.1"
